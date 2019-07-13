@@ -2,6 +2,8 @@
 
 ## Last updated: 7/13/19 14:37
 
+![image](https://drive.google.com/file/d/1qXVkMf7LPH2b1WnUdq2gLkXo37X7aHc2/view?usp=sharing)
+
 call plug#begin('~/.vim/plugged')  
 Plug 'airblade/vim-gitgutter'  
 Plug 'mileszs/ack.vim'  
