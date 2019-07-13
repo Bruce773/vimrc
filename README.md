@@ -1,6 +1,6 @@
 # .vimrc
 
-## Last updated: 7/13/19 14:37
+## Last updated: 7/13/19 16:03
 
 ![image](https://drive.google.com/uc?export=view&id=1qXVkMf7LPH2b1WnUdq2gLkXo37X7aHc2)
 
@@ -101,3 +101,5 @@ nnoremap pt :tabp<ENTER>
 nnoremap ct :tabc<ENTER>  
 "Quit  
 nnoremap qq :q<ENTER>  
+"Toggle focus between NERDTRee and file  
+map <Space>ww <C-w>w  
