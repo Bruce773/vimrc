@@ -4,6 +4,9 @@ Plug 'mileszs/ack.vim'
 "Side-view file explorer
 Plug 'scrooloose/nerdtree'
 Plug 'maxbrunsfeld/vim-yankstack'
+"Syntax highlighting for .tsx files
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 "git-vim is for better Git integration with Vim
 Plug 'motemen/git-vim'
 Plug 'tpope/vim-surround'
@@ -18,7 +21,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'ap/vim-css-color'
 Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 "Adds JavaScript syntax
 Plug 'jelera/vim-javascript-syntax'
@@ -26,13 +28,32 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'ervandew/supertab'
 "TsLint
 Plug 'heavenshell/vim-tslint'
+"Monokai colour scheme
+Plug 'crusoexia/vim-monokai'
+"NERDTree and Git joined
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 call plug#end()
 set nocompatible
 "Enable syntax highlighting
-"syntax enable
-syntax enable
-set syntax=monokai
+syntax on
 colorscheme monokai
+
+"Syntax coloring for tsx files
+" dark red
+"hi tsxTagName guifg=#E06C75
+
+" orange
+"hi tsxCloseString guifg=#F99575
+"hi tsxCloseTag guifg=#F99575
+"hi tsxAttributeBraces guifg=#F99575
+"hi tsxEqual guifg=#F99575
+
+" yellow
+"hi tsxAttrib guifg=#F8BD7F cterm=italic
+
+"hi ClassName guifg=#9DBA4E
+
 "Display numbers on left hand side
 set number
 set showmatch
@@ -48,8 +69,10 @@ set visualbell
 "tab complete filenames
 set wildmode=longest,list,full
 set wildmenu
+"Show hidden files in NERDTree
+let NERDTreeShowHidden=1
 "set leader to spacebar
-let mapleader = "\<Space>"
+map <Space> <Leader>
 "use jk in place of esc
 ino jk <esc>
 cno jk <c-c>
@@ -95,3 +118,5 @@ nnoremap pt :tabp<ENTER>
 nnoremap ct :tabc<ENTER>
 "Quit
 nnoremap qq :q<ENTER>
+"Toggle focus between NERDTRee and file
+map <Space>ww <C-w>w
