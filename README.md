@@ -1,6 +1,6 @@
 # .vimrc
 
-## Last updated: 7/13/19 16:03
+## Last updated: 7/32/19 23:12
 
 ![image](https://drive.google.com/uc?export=view&id=1qXVkMf7LPH2b1WnUdq2gLkXo37X7aHc2)
 
