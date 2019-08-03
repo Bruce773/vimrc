@@ -32,6 +32,16 @@ Plug 'heavenshell/vim-tslint'
 Plug 'crusoexia/vim-monokai'
 "NERDTree and Git joined
 Plug 'Xuyuanp/nerdtree-git-plugin'
+"Syntax checking
+Plug 'w0rp/ale'
+"Searcher
+Plug 'rking/ag.vim'
+"TypeScript suggestions and tslint fixes
+Plug 'Quramy/tsuquyomi'
+"EasyTags for tag syntax highlighting
+Plug 'xolox/vim-easytags'
+"Auto fix eslint/tslint errors
+Plug 'ruanyl/vim-fixmyjs'
 
 call plug#end()
 set nocompatible
@@ -72,7 +82,7 @@ set wildmenu
 "Show hidden files in NERDTree
 let NERDTreeShowHidden=1
 "set leader to spacebar
-map <Space> <Leader>
+nnoremap <Space> <Leader>
 "use jk in place of esc
 ino jk <esc>
 cno jk <c-c>
@@ -86,37 +96,52 @@ set hlsearch
 set nu
 set rnu
 "Show current file at the bottom of the screen
-set statusline+=%F
+set statusline+=%F%{FugitiveStatusline()}
 set laststatus=2
 let g:prettier#autoformat = 0
 autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 "Sets the working directory to the current file's directory
 autocmd BufEnter * lcd %:p:h
+"Configure Ag.vim
+let g:ag_working_path_mode="r"
 "Run TsLint automatically
 autocmd BufWritePost *.ts,*.tsx call tslint#run('a', win_getid())
+
+"Auto fix eslint errors
+let g:fixmyjs_engine = 'tslint'
+
 "Save the file
-nnoremap ss :w<ENTER> 
+nnoremap <SPACE>ss :w<ENTER> 
 "Run Prettier
-nnoremap csp :Prettier<ENTER> 
+nnoremap <SPACE>csp :Prettier<ENTER> 
 "Un-highlight search
-nnoremap sh :nohls<ENTER> 
+nnoremap <SPACE>sh :nohls<ENTER> 
 "Reload current Vim configuration
-nnoremap rr :source ~/.vimrc<ENTER> 
+nnoremap <SPACE>rr :source ~/.vimrc<ENTER> 
 "Toggle NERDTree side-view file explorer
-nnoremap fe :NERDTreeToggle<ENTER>
+nnoremap <SPACE>fe :NERDTreeToggle<ENTER>
 "Open fzf (fuzzy find) and start searching for file
-nnoremap ff :Files<ENTER>
+nnoremap <SPACE>ff :Files<ENTER>
 "Open fzf (fuzzy find) and start searching for file in current directory
-nnoremap cff :FZF<ENTER>
+nnoremap <SPACE>cff :FZF<ENTER>
 "Open new tab
-nnoremap nnt :tabnew 
+nnoremap <SPACE>nnt :tabnew 
 "Move to next tab
-nnoremap nt :tabn<ENTER>
+nnoremap <SPACE>l  :tabn<ENTER>
 "Move to previous tab
-nnoremap pt :tabp<ENTER>
+nnoremap <SPACE>h :tabp<ENTER>
 "Close tab
-nnoremap ct :tabc<ENTER>
+nnoremap <SPACE>ct :tabc<ENTER>
 "Quit
-nnoremap qq :q<ENTER>
+nnoremap <SPACE>qq :q<ENTER>
 "Toggle focus between NERDTRee and file
 map <Space>ww <C-w>w
+"Ag search
+nnoremap <Space>ts :Ag 
+"Enhanced git status
+nnoremap <Space>gs :Gstatus<ENTER>
+nnoremap <Space>gb :Gblame<ENTER>
+
+nnoremap <Space>ts :TsuQuickFix<ENTER>
+"Fix eslint errors
+nnoremap <SPACE><SPACE>f :Fixmyjs<ENTER>
