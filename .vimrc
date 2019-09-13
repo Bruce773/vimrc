@@ -36,10 +36,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'w0rp/ale'
 "Searcher
 Plug 'rking/ag.vim'
+
 "TypeScript suggestions and tslint fixes
-Plug 'Quramy/tsuquyomi'
-"EasyTags for tag syntax highlighting
-Plug 'xolox/vim-easytags'
+"Plug 'Quramy/tsuquyomi'
+
 "Auto fix eslint/tslint errors
 Plug 'ruanyl/vim-fixmyjs'
 
@@ -95,6 +95,8 @@ set updatetime=100
 set hlsearch
 set nu
 set rnu
+"Configuration for ctags
+set tags=tags
 "Show current file at the bottom of the screen
 set statusline+=%F%{FugitiveStatusline()}
 set laststatus=2
@@ -122,8 +124,6 @@ nnoremap <SPACE>rr :source ~/.vimrc<ENTER>
 nnoremap <SPACE>fe :NERDTreeToggle<ENTER>
 "Open fzf (fuzzy find) and start searching for file
 nnoremap <SPACE>ff :Files<ENTER>
-"Open fzf (fuzzy find) and start searching for file in current directory
-nnoremap <SPACE>cff :FZF<ENTER>
 "Open new tab
 nnoremap <SPACE>nnt :tabnew 
 "Move to next tab
@@ -145,3 +145,9 @@ nnoremap <Space>gb :Gblame<ENTER>
 nnoremap <Space>ts :TsuQuickFix<ENTER>
 "Fix eslint errors
 nnoremap <SPACE><SPACE>f :Fixmyjs<ENTER>
+
+"ctrl-<movement> split navigation instead of initial ctrl-w
+"nnoremap <C-J> <C-W><C-J>
+"nnoremap <C-K> <C-W><C-K>
+"nnoremap <C-L> <C-W><C-L>
+"nnoremap <C-H> <C-W><C-H>
