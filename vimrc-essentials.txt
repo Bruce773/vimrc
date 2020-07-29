@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 call plug#end()
+set relativenumber
 "set leader to spacebar
 nnoremap <Space> <Leader>
 "use jk in place of esc
