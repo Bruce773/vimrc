@@ -1,3 +1,8 @@
+"set leader to spacebar
+nnoremap <Space> <Leader>
+"use jk in place of esc
+ino jk <esc>
+cno jk <c-c>
 "Save the file
 nnoremap <SPACE>ss :w<ENTER>
 "Run Prettier
