@@ -1,3 +1,6 @@
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+call plug#end()
 "set leader to spacebar
 nnoremap <Space> <Leader>
 "use jk in place of esc
@@ -27,3 +30,10 @@ nnoremap <SPACE>ct :tabc<ENTER>
 nnoremap <SPACE>qq :q<ENTER>
 "Toggle focus between NERDTRee and file
 map <Space>ww <C-w>w
+"Display numbers on left hand side
+set number
+set showmatch
+"Allow use of Mac default CMD + c and CMD + v
+set clipboard=unnamed
+"Show tabs at the top of the editor window
+set showtabline=2
