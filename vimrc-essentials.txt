@@ -1,0 +1,40 @@
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+call plug#end()
+set relativenumber
+"set leader to spacebar
+nnoremap <Space> <Leader>
+"use jk in place of esc
+ino jk <esc>
+cno jk <c-c>
+"Save the file
+nnoremap <SPACE>ss :w<ENTER>
+"Run Prettier
+nnoremap <SPACE>csp :Prettier<ENTER>
+"Un-highlight search
+nnoremap <SPACE>sh :nohls<ENTER>
+"Reload current Vim configuration
+nnoremap <SPACE>rr :source ~/.vimrc<ENTER>
+"Toggle NERDTree side-view file explorer
+nnoremap <SPACE>fe :NERDTreeToggle<ENTER>
+"Open fzf (fuzzy find) and start searching for file
+nnoremap <SPACE>ff :Files<ENTER>
+"Open new tab
+nnoremap <SPACE>nnt :tabnew
+"Move to next tab
+nnoremap <SPACE>l  :tabn<ENTER>
+"Move to previous tab
+nnoremap <SPACE>h :tabp<ENTER>
+"Close tab
+nnoremap <SPACE>ct :tabc<ENTER>
+"Quit
+nnoremap <SPACE>qq :q<ENTER>
+"Toggle focus between NERDTRee and file
+map <Space>ww <C-w>w
+"Display numbers on left hand side
+set number
+set showmatch
+"Allow use of Mac default CMD + c and CMD + v
+set clipboard=unnamed
+"Show tabs at the top of the editor window
+set showtabline=2
