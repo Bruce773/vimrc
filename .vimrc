@@ -36,6 +36,13 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'w0rp/ale'
 "Searcher
 Plug 'rking/ag.vim'
+" CocVim is a wonderful autocomplete tool
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" VimWiki is great for keeping notes inside Vim
+Plug 'vimwiki/vimwiki'
+" fzf and fzf.vim
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 "TypeScript suggestions and tslint fixes
 "Plug 'Quramy/tsuquyomi'
@@ -44,10 +51,28 @@ Plug 'rking/ag.vim'
 Plug 'ruanyl/vim-fixmyjs'
 
 call plug#end()
+call plug#end()
 set nocompatible
+call plug#end()
+call plug#end()
 "Enable syntax highlighting
 syntax on
 colorscheme monokai
+
+" Disable Coc outdated Vim warning
+let g:coc_disable_startup_warning = 1
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 "Syntax coloring for tsx files
 " dark red
@@ -104,13 +129,21 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 "Sets the working directory to the current file's directory
 autocmd BufEnter * lcd %:p:h
-"Configure Ag.vim
-let g:ag_working_path_mode="r"
+
 "Run TsLint automatically
 autocmd BufWritePost *.ts,*.tsx call tslint#run('a', win_getid())
 
 "Auto fix eslint errors
 let g:fixmyjs_engine = 'tslint'
+
+"command pasted from terminal telling me to paste in .vimrc after installing
+"fzf via Homebrew
+
+set rtp+=/usr/local/opt/fzf
+
+"Open NERDTree by default when Vim opens
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 "Save the file
 nnoremap <SPACE>ss :w<ENTER> 
@@ -136,10 +169,10 @@ nnoremap <SPACE>ct :tabc<ENTER>
 nnoremap <SPACE>qq :q<ENTER>
 "Toggle focus between NERDTRee and file
 map <Space>ww <C-w>w
-"Ag search
-nnoremap <Space>ts :Ag 
+
 "Enhanced git status
 nnoremap <Space>gs :Gstatus<ENTER>
+"Enhanced git blame
 nnoremap <Space>gb :Gblame<ENTER>
 
 nnoremap <Space>ts :TsuQuickFix<ENTER>
